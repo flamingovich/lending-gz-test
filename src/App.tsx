@@ -190,31 +190,6 @@ const OfferCard = ({
                 Получить бонус
               </button>
               
-              {/* VIP Support Button - Simplified and Premium */}
-              <div className="mt-4">
-                <div className="relative overflow-hidden rounded-sm border border-[#c5a059]/20 bg-[#050505] group/vip shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
-                  <button 
-                    disabled
-                    className="w-full py-5 px-6 flex items-center gap-4 text-gray-500 cursor-not-allowed relative"
-                  >
-                    <div className="w-12 h-12 rounded-sm bg-gradient-to-br from-[#1a1a1a] to-[#050505] flex items-center justify-center border border-[#c5a059]/30 shadow-inner flex-shrink-0">
-                      <Lock size={20} className="text-[#c5a059]/40" />
-                    </div>
-                    
-                    <div className="flex flex-col items-start gap-1">
-                      <span className="text-sm font-black uppercase tracking-[0.2em] gold-gradient-text opacity-40">VIP-ПОДДЕРЖКА</span>
-                      <div className="flex items-center gap-1.5">
-                        <ShieldCheck size={12} className="text-[#c5a059]/30" />
-                        <span className="text-[9px] font-bold text-gray-600 uppercase tracking-wider">Требуется депозит: <span className="text-[#c5a059]/60">5.000 RUB</span></span>
-                      </div>
-                    </div>
-
-                    {/* Subtle Overlay */}
-                    <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
-                  </button>
-                </div>
-              </div>
-
               <PromoCode code={promoCode} />
             </div>
 
@@ -550,6 +525,7 @@ const ZanosGallery = () => {
     </section>
   );
 };
+
 
 export default function App() {
   return (
