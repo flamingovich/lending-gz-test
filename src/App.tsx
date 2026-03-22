@@ -24,33 +24,57 @@ const PromoCode = ({ code }: { code: string }) => {
   };
 
   return (
-    <div className="mt-6 p-4 bg-black/40 rounded-sm border border-[#c5a059]/10 flex flex-col items-center justify-center gap-1 group relative overflow-hidden transition-all hover:border-[#c5a059]/30">
-      <div className="flex items-center gap-2 mb-1">
-        <span className="text-[10px] uppercase tracking-[0.2em] text-[#c5a059] font-black">промо-код</span>
+    <div className="mt-6 relative group cursor-pointer" onClick={handleCopy}>
+      {/* Voucher Background with Cutouts */}
+      <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#050505] border-r border-[#c5a059]/20 z-10"></div>
+      <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#050505] border-l border-[#c5a059]/20 z-10"></div>
+      
+      <div className="relative p-4 bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-sm border border-dashed border-[#c5a059]/30 flex flex-col items-center justify-center gap-1 overflow-hidden transition-all duration-300 group-hover:border-[#c5a059]/60 group-hover:shadow-[0_0_20px_rgba(197,160,89,0.15)]">
+        {/* Continuous Shine effect */}
+        <motion.div 
+          animate={{ x: ['-100%', '200%'] }}
+          transition={{ 
+            duration: 3, 
+            repeat: Infinity, 
+            ease: "linear",
+            repeatDelay: 1
+          }}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none"
+        />
+        
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-[9px] uppercase tracking-[0.3em] text-[#c5a059] font-black opacity-80">активировать промо-код</span>
+        </div>
+        
+        <div className="flex items-center gap-4">
+          <span className="text-3xl font-black text-white tracking-[0.25em] gold-gradient-text drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{code}</span>
+          <div className="p-1.5 bg-[#c5a059]/10 rounded-sm border border-[#c5a059]/20">
+            {copied ? <Check size={16} className="text-green-500" /> : <Copy size={16} className="text-[#c5a059]" />}
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-2 mt-2">
+          <div className="h-px w-4 bg-[#c5a059]/20"></div>
+          <span className="text-[10px] uppercase tracking-[0.15em] text-gray-400 font-bold">100FS за регистрацию</span>
+          <div className="h-px w-4 bg-[#c5a059]/20"></div>
+        </div>
+
+        <AnimatePresence>
+          {copied && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="absolute inset-0 bg-[#c5a059] flex items-center justify-center text-xs font-black text-black z-20"
+            >
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={16} />
+                СКОПИРОВАНО
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-      <div className="flex items-center gap-4">
-        <span className="text-3xl font-black text-white tracking-[0.2em] drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">{code}</span>
-        <button 
-          onClick={handleCopy}
-          className="p-2 hover:bg-[#c5a059]/20 rounded-sm transition-colors cursor-pointer border border-[#c5a059]/20"
-          title="Копировать"
-        >
-          {copied ? <Check size={18} className="text-green-500" /> : <Copy size={18} className="text-[#c5a059]" />}
-        </button>
-      </div>
-      <span className="text-[10px] uppercase tracking-[0.15em] text-gray-400 font-bold mt-2">100FS за регистрацию</span>
-      <AnimatePresence>
-        {copied && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-[#c5a059] flex items-center justify-center text-xs font-black text-black pointer-events-none"
-          >
-            СКОПИРОВАНО
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
@@ -152,28 +176,42 @@ const OfferCard = ({
           <div className="mt-auto space-y-6">
             <div>
               <button className="gold-button w-full py-4 font-black uppercase tracking-[0.2em] text-sm rounded-sm transition-all shadow-[0_5px_15px_rgba(0,0,0,0.4)] active:scale-[0.97] cursor-pointer hover:brightness-110 relative overflow-hidden group/btn border border-white/10">
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
+                {/* Continuous Shine effect */}
+                <motion.div 
+                  animate={{ x: ['-100%', '200%'] }}
+                  transition={{ 
+                    duration: 2.5, 
+                    repeat: Infinity, 
+                    ease: "linear",
+                    repeatDelay: 0.5
+                  }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none"
+                />
                 Получить бонус
               </button>
               
-              {/* VIP Support Button */}
-              <div className="mt-4 relative group/vip">
-                <button 
-                  disabled
-                  className="w-full py-3 bg-black/60 border border-white/5 rounded-sm flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 cursor-not-allowed relative overflow-hidden"
-                >
-                  <Lock size={12} className="text-gray-600" />
-                  Написать в VIP-ПОДДЕРЖКУ
-                  
-                  {/* Lock Overlay Effect */}
-                  <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
-                </button>
-                
-                {/* Tooltip/Label */}
-                <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-full text-center opacity-0 group-hover/vip:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <span className="text-[9px] font-bold text-[#c5a059] uppercase tracking-tighter bg-black/90 px-2 py-1 rounded-sm border border-[#c5a059]/30 whitespace-nowrap">
-                    Разблокируется после депозита в 5.000 RUB
-                  </span>
+              {/* VIP Support Button - Simplified and Premium */}
+              <div className="mt-4">
+                <div className="relative overflow-hidden rounded-sm border border-[#c5a059]/20 bg-[#050505] group/vip shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+                  <button 
+                    disabled
+                    className="w-full py-5 px-6 flex items-center gap-4 text-gray-500 cursor-not-allowed relative"
+                  >
+                    <div className="w-12 h-12 rounded-sm bg-gradient-to-br from-[#1a1a1a] to-[#050505] flex items-center justify-center border border-[#c5a059]/30 shadow-inner flex-shrink-0">
+                      <Lock size={20} className="text-[#c5a059]/40" />
+                    </div>
+                    
+                    <div className="flex flex-col items-start gap-1">
+                      <span className="text-sm font-black uppercase tracking-[0.2em] gold-gradient-text opacity-40">VIP-ПОДДЕРЖКА</span>
+                      <div className="flex items-center gap-1.5">
+                        <ShieldCheck size={12} className="text-[#c5a059]/30" />
+                        <span className="text-[9px] font-bold text-gray-600 uppercase tracking-wider">Требуется депозит: <span className="text-[#c5a059]/60">5.000 RUB</span></span>
+                      </div>
+                    </div>
+
+                    {/* Subtle Overlay */}
+                    <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
+                  </button>
                 </div>
               </div>
 
