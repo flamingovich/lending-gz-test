@@ -193,6 +193,46 @@ const OfferCard = ({
               <PromoCode code={promoCode} />
             </div>
 
+            {/* Payment Methods */}
+            <div className="flex flex-wrap items-center justify-center gap-4 py-3 border-t border-[#c5a059]/10">
+              <img 
+                src="https://www.designenlassen.de/blog/wp-content/uploads/2024/03/visa.png" 
+                alt="Visa" 
+                className="h-6 w-auto rounded-sm" 
+                referrerPolicy="no-referrer" 
+              />
+              <img 
+                src="https://www.designenlassen.de/blog/wp-content/uploads/2024/02/Dein-Abschnittstext-35.png" 
+                alt="Mastercard" 
+                className="h-6 w-auto rounded-sm" 
+                referrerPolicy="no-referrer" 
+              />
+              <img 
+                src="https://kb.gbsmarket.ru/faq/_images/2024_04_26-23_31_30.png" 
+                alt="СБП" 
+                className="h-6 w-auto rounded-sm" 
+                referrerPolicy="no-referrer" 
+              />
+              <img 
+                src="https://img.icons8.com/color/1200/mir.jpg" 
+                alt="МИР" 
+                className="h-6 w-auto rounded-sm" 
+                referrerPolicy="no-referrer" 
+              />
+              <img 
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGcttVBhyCMnl1e_iNaaK7Z6GRz5WZTlDc3g&s" 
+                alt="КРИПТА" 
+                className="h-6 w-auto rounded-sm" 
+                referrerPolicy="no-referrer" 
+              />
+              <img 
+                src="https://cdn.fkwallet.io/assets/images/logos/fkwallet_small_white_1_2.png" 
+                alt="FK WALLET" 
+                className="h-5 w-auto rounded-sm" 
+                referrerPolicy="no-referrer" 
+              />
+            </div>
+
             {/* License Section */}
             <div className="pt-6 border-t border-[#c5a059]/10">
               <div className="flex items-start gap-4">
