@@ -104,7 +104,19 @@ const OfferCard = ({
           <div className="absolute top-2 right-2 w-2 h-2 border-t-2 border-r-2 border-[#c5a059]/40"></div>
           
           <div className="relative z-10 w-full h-full flex items-center justify-center scale-110 group-hover:scale-125 transition-transform duration-500">
-            {logo}
+            <motion.div
+              animate={{ 
+                scale: [1, 1.05, 1],
+              }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="w-full h-full flex items-center justify-center"
+            >
+              {logo}
+            </motion.div>
           </div>
         </div>
 
@@ -143,6 +155,28 @@ const OfferCard = ({
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
                 Получить бонус
               </button>
+              
+              {/* VIP Support Button */}
+              <div className="mt-4 relative group/vip">
+                <button 
+                  disabled
+                  className="w-full py-3 bg-black/60 border border-white/5 rounded-sm flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 cursor-not-allowed relative overflow-hidden"
+                >
+                  <Lock size={12} className="text-gray-600" />
+                  Написать в VIP-ПОДДЕРЖКУ
+                  
+                  {/* Lock Overlay Effect */}
+                  <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
+                </button>
+                
+                {/* Tooltip/Label */}
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-full text-center opacity-0 group-hover/vip:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <span className="text-[9px] font-bold text-[#c5a059] uppercase tracking-tighter bg-black/90 px-2 py-1 rounded-sm border border-[#c5a059]/30 whitespace-nowrap">
+                    Разблокируется после депозита в 5.000 RUB
+                  </span>
+                </div>
+              </div>
+
               <PromoCode code={promoCode} />
             </div>
 
@@ -297,7 +331,7 @@ const LuckyWheel = () => {
                   strokeOpacity="0.4"
                 />
                 <text
-                  x="78"
+                  x="82"
                   y="50"
                   fill={i % 2 === 0 ? "#c5a059" : "#ffffff"}
                   fontSize="3.2"
@@ -376,6 +410,106 @@ const LuckyWheel = () => {
 
       {/* Result Overlay (Removed from bottom, handled in center) */}
     </div>
+  );
+};
+
+const ZanosGallery = () => {
+  const zanosy = [
+    { name: "Александр", img: "/zanos/Снимок экрана 2026-03-15 024932.png" },
+    { name: "Дмитрий", img: "/zanos/Снимок экрана 2026-03-16 011140.png" },
+    { name: "Максим", img: "/zanos/Снимок экрана 2026-03-16 012103.png" },
+    { name: "Иван", img: "/zanos/Снимок экрана 2026-03-16 021036.png" },
+    { name: "Сергей", img: "/zanos/Снимок экрана 2026-03-16 034034.png" },
+    { name: "Андрей", img: "/zanos/Снимок экрана 2026-03-16 040655.png" },
+    { name: "Никита", img: "/zanos/Снимок экрана 2026-03-17 004706.png" },
+    { name: "Артем", img: "/zanos/Снимок экрана 2026-03-17 010754.png" },
+    { name: "Виктор", img: "/zanos/Снимок экрана 2026-03-17 012558.png" },
+    { name: "Олег", img: "/zanos/Снимок экрана 2026-03-17 020106.png" },
+    { name: "Павел", img: "/zanos/Снимок экрана 2026-03-18 011505.png" },
+    { name: "Роман", img: "/zanos/Снимок экрана 2026-03-18 014356.png" },
+    { name: "Денис", img: "/zanos/Снимок экрана 2026-03-18 020433.png" },
+    { name: "Игорь", img: "/zanos/Снимок экрана 2026-03-18 022419.png" },
+    { name: "Кирилл", img: "/zanos/Снимок экрана 2026-03-18 024646.png" },
+    { name: "Михаил", img: "/zanos/Снимок экрана 2026-03-18 025935.png" },
+    { name: "Алексей", img: "/zanos/Снимок экрана 2026-03-18 030623.png" },
+    { name: "Стас", img: "/zanos/Снимок экрана 2026-03-20 012007.png" },
+    { name: "Егор", img: "/zanos/Снимок экрана 2026-03-20 014741.png" },
+    { name: "Влад", img: "/zanos/Снимок экрана 2026-03-21 012812.png" },
+    { name: "Глеб", img: "/zanos/Снимок экрана 2026-03-21 033040.png" },
+    { name: "Юрий", img: "/zanos/Снимок экрана 2026-03-21 045001.png" },
+    { name: "Костя", img: "/zanos/Снимок экрана 2026-03-21 045220.png" },
+  ];
+
+  return (
+    <section className="py-24 bg-black border-t border-[#c5a059]/10 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#c5a059]/40 to-transparent"></div>
+      
+      <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+        <div className="inline-flex items-center gap-3 mb-4 px-4 py-1.5 rounded-full border border-[#c5a059]/20 bg-[#c5a059]/5">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#c5a059] animate-pulse"></div>
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#c5a059]">Галерея заносов</span>
+        </div>
+        <h2 className="text-2xl md:text-4xl font-black text-white uppercase tracking-tight mb-6 gold-gradient-text drop-shadow-lg">
+          Заносы наших зрителей
+        </h2>
+        <div className="max-w-2xl mx-auto p-6 border border-[#c5a059]/10 bg-[#050505] rounded-sm relative group">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#c5a059]/0 via-[#c5a059]/5 to-[#c5a059]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+          <p className="text-gray-400 text-sm md:text-base font-bold uppercase tracking-widest leading-relaxed relative z-10">
+            Кидай в телегу свой занос, и забирай награду — <br />
+            <a 
+              href="https://t.me/ludovar" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-[#c5a059] hover:brightness-125 transition-all underline underline-offset-8 decoration-[#c5a059]/30 hover:decoration-[#c5a059]"
+            >
+              @ludovar
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div className="relative flex overflow-hidden py-4">
+        <motion.div 
+          className="flex gap-8 whitespace-nowrap"
+          animate={{ x: [0, -(zanosy.length * 320)] }}
+          transition={{ 
+            duration: zanosy.length * 5, 
+            repeat: Infinity, 
+            ease: "linear" 
+          }}
+        >
+          {[...zanosy, ...zanosy].map((zanos, i) => (
+            <div key={i} className="w-72 flex-shrink-0 group">
+              <div className="relative aspect-[16/10] rounded-sm overflow-hidden border border-[#c5a059]/20 bg-[#0a0a0a] shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-500 group-hover:border-[#c5a059]/50 group-hover:shadow-[0_15px_40px_rgba(197,160,89,0.15)]">
+                <img 
+                  src={zanos.img} 
+                  alt={`Занос от ${zanos.name}`}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = `https://picsum.photos/seed/win${i % 10}/800/500`;
+                  }}
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+                
+                {/* Overlay Info */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-full border border-[#c5a059]/30 flex items-center justify-center bg-black/50">
+                      <span className="text-[10px] font-bold text-[#c5a059]">{zanos.name[0]}</span>
+                    </div>
+                    <span className="text-[10px] font-black text-white uppercase tracking-widest drop-shadow-md">
+                      {zanos.name}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
@@ -492,6 +626,8 @@ export default function App() {
           />
         </div>
       </main>
+
+      <ZanosGallery />
 
       {/* Footer */}
       <footer className="bg-black border-t border-[#c5a059]/10 py-20">
